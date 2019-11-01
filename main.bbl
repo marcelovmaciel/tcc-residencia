@@ -1,0 +1,73 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\setlength{\labelsep}{0pt}\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{v-1.9 }
+
+\bibitem[Cameron e Wisher 1991]{cameron1991terminator}
+\abntrefinfo{Cameron e Wisher}{CAMERON; WISHER}{1991}
+{CAMERON, J.; WISHER, W. \emph{Terminator 2: Judgment Day}. [S.l.]: USA, 1991.}
+
+\bibitem[Canziani, Paszke e Culurciello 2016]{canziani2016analysis}
+\abntrefinfo{Canziani, Paszke e Culurciello}{CANZIANI; PASZKE;
+  CULURCIELLO}{2016}
+{CANZIANI, A.; PASZKE, A.; CULURCIELLO, E. An analysis of deep neural network
+  models for practical applications.
+\emph{arXiv preprint arXiv:1605.07678}, 2016.}
+
+\bibitem[Carbonell, Mitchell e Michalski 1984]{carbonell1984machine}
+\abntrefinfo{Carbonell, Mitchell e Michalski}{CARBONELL; MITCHELL;
+  MICHALSKI}{1984}
+{CARBONELL, J.~G.; MITCHELL, T.~M.; MICHALSKI, R.~S. \emph{Machine learning: An
+  artificial intelligence approach}. [S.l.]: Springer-Verlag, 1984.}
+
+\bibitem[Cockburn, Henderson e Stern 2018]{cockburn2018impact}
+\abntrefinfo{Cockburn, Henderson e Stern}{COCKBURN; HENDERSON; STERN}{2018}
+{COCKBURN, I.~M.; HENDERSON, R.; STERN, S. \emph{The impact of artificial
+  intelligence on innovation}.
+[S.l.], 2018.}
+
+\bibitem[Doshi-Velez e Kim 2017]{doshi2017towards}
+\abntrefinfo{Doshi-Velez e Kim}{DOSHI-VELEZ; KIM}{2017}
+{DOSHI-VELEZ, F.; KIM, B. Towards a rigorous science of interpretable machine
+  learning.
+\emph{arXiv preprint arXiv:1702.08608}, 2017.}
+
+\bibitem[Dreiseitl e Ohno-Machado 2002]{dreiseitl2002logistic}
+\abntrefinfo{Dreiseitl e Ohno-Machado}{DREISEITL; OHNO-MACHADO}{2002}
+{DREISEITL, S.; OHNO-MACHADO, L. Logistic regression and artificial neural
+  network classification models: a methodology review.
+\emph{Journal of biomedical informatics}, Elsevier, v.~35, n.~5-6, p. 352--359,
+  2002.}
+
+\bibitem[Gubbi et al. 2013]{gubbi2013internet}
+\abntrefinfo{Gubbi et al.}{GUBBI et al.}{2013}
+{GUBBI, J. et al. Internet of things (iot): A vision, architectural elements,
+  and future directions.
+\emph{Future generation computer systems}, Elsevier, v.~29, n.~7, p.
+  1645--1660, 2013.}
+
+\bibitem[Kogut 2003]{kogut2003global}
+\abntrefinfo{Kogut}{KOGUT}{2003}
+{KOGUT, B.~M. \emph{The global internet economy}. [S.l.]: MIT Press, 2003.}
+
+\bibitem[Makridakis 2017]{makridakis2017forthcoming}
+\abntrefinfo{Makridakis}{MAKRIDAKIS}{2017}
+{MAKRIDAKIS, S. The forthcoming artificial intelligence (ai) revolution: Its
+  impact on society and firms.
+\emph{Futures}, Elsevier, v.~90, p. 46--60, 2017.}
+
+\bibitem[Miller 2018]{miller2018explanation}
+\abntrefinfo{Miller}{MILLER}{2018}
+{MILLER, T. Explanation in artificial intelligence: Insights from the social
+  sciences.
+\emph{Artificial Intelligence}, Elsevier, 2018.}
+
+\bibitem[Sch{\"u}tze, Manning e Raghavan 2007]{schutze2007introduction}
+\abntrefinfo{Sch{\"u}tze, Manning e Raghavan}{SCH{\"U}TZE; MANNING;
+  RAGHAVAN}{2007}
+{SCH{\"U}TZE, H.; MANNING, C.~D.; RAGHAVAN, P. \emph{An introduction to
+  information retrieval}. [S.l.]: Cambridge University Press,, 2007.}
+
+\end{thebibliography}

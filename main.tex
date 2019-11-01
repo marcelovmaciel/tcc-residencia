@@ -1,0 +1,318 @@
+%\title{Modelo de Projeto de pesquisa}
+%% abtex2-modelo-projeto-pesquisa.tex, v-1.9 laurocesar
+%% Copyright 2012-2013 by abnTeX2 group at http://abntex2.googlecode.com/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of taTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://abntex2.googlecode.com/
+%%
+%% This work consists of the files abntex2-modelo-projeto-pesquisa.tex
+%% and abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Projeto de pesquisa em conformidade com 
+% ABNT NBR 15287:2011 Informação e documentação - Projeto de pesquisa -
+% Apresentação 
+% ------------------------------------------------------------------------ 
+% ------------------------------------------------------------------------
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	openany,			%openright capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			%twoside para impressão em verso e anverso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{shapes,arrows}
+% ---
+
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Um estudo de caso do uso de mineração de dados e aprendizado de máquina
+  no aprimoramento inspeções de estações radio base} \autor{Marcelo Veloso
+  Maciel} \local{Brasil}
+
+\instituicao{%
+  Universidade de Pernambuco -- UPE
+  \par
+  Residência Tecnológica em Inteligência Artificial}
+\tipotrabalho{Trabalho de conclusão}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho de conclusão}
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{projeto de pesquisa}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% ---
+\imprimirfolhaderosto
+% ---
+
+% ---
+% NOTA DA ABNT NBR 15287:2011, p. 4:
+%  ``Se exigido pela entidade, apresentar os dados curriculares do autor em
+%     folha ou página distinta após a folha de rosto.''
+% ---
+
+% ---
+% inserir lista de ilustrações
+% ---
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de tabelas
+% ---
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de abreviaturas e siglas
+% ---
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ----------------------------------------------------------
+% Introdução
+% ----------------------------------------------------------
+\chapter*[Introdução]{Introdução}
+\addcontentsline{toc}{chapter}{Introdução}
+
+%\backrefsetup{disable}
+
+Nas últimas décadas a temática do impacto social da inteligência artificial vem
+tomando centralidade no imaginário prospectivo do cidadão médio, da comunidade
+científica e dos agentes estatais \cite{cameron1991terminator,
+  cockburn2018impact, makridakis2017forthcoming}. A ascensão do assunto na
+opinião pública não é desconexa de mudanças no contexto econômico e político
+\cite{kogut2003global}. A difusão da internet na sociedade, culminando nas
+tecnologias IoT \cite{gubbi2013internet}, faz com que dados passem a ser
+consideradas pela The Economist \footnote{Fonte:
+  \url{https://tinyurl.com/y39u52kk}.
+  Acessado em 1 de Novembro de 2019 .} o novo petróleo.
+
+
+Esse papel dos dados pressupõe a capacidade dos agentes econômicos de extrair
+valor deles. É essa a seara de inserção dos algoritmos de inteligência
+computacional, particularmente os de aprendizado de máquina. Algoritmos de
+aprendizado de máquina são aqueles que aprendem com uma experiência com relação
+a alguma tarefa e uma medida de performance se a performance na tarefa melhora
+com a experiência \cite{carbonell1984machine}. Se os dados são o novo petróleo
+então os algoritmos utilizados para extrair informação e aprender com esses
+dados podem ser considerados os novos motores da economia.
+
+Embora grandes empresas de tecnologia como Google, Facebook e Amazon façam uso
+de grandes arquiteturas de redes neurais artificiais as quais necessitam de
+dezenas de horas de treinamento em unidades de processamento gráfico, a
+realidade da maior parte das empresas que buscam se inserir nessa nova era
+algorítmica difere em escopo \cite{canziani2016analysis}. Se por um lado a
+inteligência artificial traz a possibilidade de uma riqueza de aplicações e
+otimizações no processo produtivo das empresas, por outro lado se faz necessária
+uma infraestrutura de dados que permita a aplicação dessas técnicas e uma
+``pipeline'' de mineração e recuperação de informação
+\cite{schutze2007introduction}. Ademais a restrição orçamentária e computacional
+e o imperativo da interpretabilidade\footnote{No contexto de aprendizado de
+  máquina a interpretabilidade é definida por \citeonline[p.2]{doshi2017towards}
+  "como a habilidade de explicar ou apresentar em termos compreensíveis para
+  humanos". Uma definição equivalente de interpretabilidade é: o grau no qual um
+  humano pode compreender a causa de uma decisão \cite{miller2018explanation}.}
+do funcionamento dos algoritmos nos direciona, nesses casos medianos, à
+algoritmos mais bem estabelecidos e simples em comparação aos de alta
+publicização \cite{dreiseitl2002logistic}.
+
+O presente estudo apresenta um caso no qual aplicamos sistemas inteligentes
+de recuperação e análise de informação no aprimoramento de um
+processo rotineiro na indústria de telecomunicações: a inspeção de estações
+rádio base.
+
+\chapter[Descrição do Caso]{Descrição do Caso}
+
+
+
+\chapter[Solução proposta]{Solução proposta}
+
+
+
+\chapter*[Conclusão]{Conclusão}
+\addcontentsline{toc}{chapter}{Conclusão}
+
+% ---
+% Conclusão
+% ---
+
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{abntex2-modelo-references}
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%
+%\glossary
+%---------------------------------------------------------------------
+% INDICE REMISSIVO
+%---------------------------------------------------------------------
+
+\phantompart
+
+\printindex
+
+
+\end{document}
