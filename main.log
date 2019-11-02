@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2019/dev/Debian) (preloaded format=xelatex 2019.9.18)  1 NOV 2019 18:41
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2019/dev/Debian) (preloaded format=xelatex 2019.9.18)  2 NOV 2019 16:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1287,9 +1287,6 @@ LaTeX Info: Redefining \nameref on input line 162.
 LaTeX Info: Redefining \ref on input line 162.
 LaTeX Info: Redefining \pageref on input line 162.
 LaTeX Info: Redefining \nameref on input line 162.
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
 \myptabbox=\box86
 \myptabboxwidth=\skip266
 LaTeX Info: Redefining \microtypecontext on input line 162.
@@ -1414,26 +1411,26 @@ No file main.ind.
 \tf@toc=\write9
 \openout9 = `main.toc'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 318.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 318.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 338.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 338.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 318.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 318.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 338.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 338.
 Package rerunfilecheck Info: File `main.brf' has not changed.
 (rerunfilecheck)             Checksum: 67DAC0AE24CB2473377C00491C1F3823.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 318.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 338.
  ) 
 Here is how much of TeX's memory you used:
- 36932 strings out of 494900
- 694562 string characters out of 6177140
+ 36929 strings out of 494900
+ 694507 string characters out of 6177140
  957411 words of memory out of 5000000
- 40378 multiletter control sequences out of 15000+600000
+ 40375 multiletter control sequences out of 15000+600000
  593196 words of font info for 60 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,12n,67p,433b,471s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,12n,67p,559b,471s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on main.pdf (10 pages).

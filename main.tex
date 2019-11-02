@@ -102,7 +102,7 @@
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ---
 \titulo{Um estudo de caso do uso de mineração de dados e aprendizado de máquina
-  no aprimoramento inspeções de estações radio base} \autor{Marcelo Veloso
+  no aprimoramento de  inspeções de estações radio base} \autor{Marcelo Veloso
   Maciel} \local{Brasil}
 
 \instituicao{%
@@ -241,7 +241,6 @@ consideradas pela The Economist \footnote{Fonte:
   \url{https://tinyurl.com/y39u52kk}.
   Acessado em 1 de Novembro de 2019 .} o novo petróleo.
 
-
 Esse papel dos dados pressupõe a capacidade dos agentes econômicos de extrair
 valor deles. É essa a seara de inserção dos algoritmos de inteligência
 computacional, particularmente os de aprendizado de máquina. Algoritmos de
@@ -270,14 +269,35 @@ do funcionamento dos algoritmos nos direciona, nesses casos medianos, à
 algoritmos mais bem estabelecidos e simples em comparação aos de alta
 publicização \cite{dreiseitl2002logistic}.
 
-O presente estudo apresenta um caso no qual aplicamos sistemas inteligentes
-de recuperação e análise de informação no aprimoramento de um
-processo rotineiro na indústria de telecomunicações: a inspeção de estações
-rádio base.
+O presente estudo apresenta um caso de sucesso da aplicação de sistemas
+inteligentes de recuperação e análise de informação de relativa simplicidade no
+aprimoramento de um processo rotineiro na indústria de telecomunicações: a
+inspeção de estações rádio base.
 
 \chapter[Descrição do Caso]{Descrição do Caso}
+Como referenciado anteriormente o sistema alvo de interesse do nosso estudo está
+inserido no âmbito da indústria de telecomunicações. Na rede de celulares a
+mediação entre o celular dos usuários e as companhias telefônicas é feita pelas
+Estações Rádio Base (doravante ERB ou sítio celular). São nesses sítios que
+estão instalados os equipamentos necessários para a comunicação entre aparelhos
+celulares e as centrais de comunicação das agências telefônicas. Nesses
+ambientes são realizadas vistorias frequentes tendo em vista sua relevância para
+a qualidade do serviço de telefonia. Nessas vistorias são checados itens
+referentes às chaves do sítio, à rua de acesso, alarmes externos, aterramento,
+baterias, cabos, fontes de energia, antenas, dentre centenas outros. Essa
+vistoria é um trabalho conjunto entre técnicos que visitam os sítios e
+engenheiros de telecomunicação que analisam as informações. Atualmente essa
+troca de informação é feita da seguinte maneira: o técnico visita a ERB e para
+cada item de um \textit{checklist}, que tem de 400 a mais de  600 itens a depender
+da empresa de telefonia detentora do sítio, tiram fotos que são enviadas a um
+sistema, onde são aceitas ou rejeitadas pelos engenheiros na central. Contudo,
+nem todo item precisa ser checado a depender de condições particulares da ERB.
+Estes itens são, portanto, abonados.
 
-
+Em conversas com técnicos e engenheiros responsáveis pelas inspeções foram
+identificadas ao menos duas possibilidades de aplicação de inteligência
+computacional no aperfeiçoamento do processo: a definição de quais itens são
+abonados e quais são aprovadas ou rejeitadas. O problema da dispensa do item, enfoque do presente trabalho, é que os técnicos não sabem de antemão quais itens devem ser abonados em um determinado sítio. Ao chegarem a ERB, desta forma, primeiro devem checar dentre centenas de itens em uma lista quais são dispensáveis e só então iniciam o trabalho da vistoria propriamente dita. Isso contribui drasticamente para a lentidão da atividade. Nossa contribuição para a redução do tempo despendido nessa checagem é descrita em seguida.
 
 \chapter[Solução proposta]{Solução proposta}
 
