@@ -318,7 +318,7 @@ próprios técnicos usam para abonar manualmente os itens:
 \item Tipo de site: Gabinete ou Container;
 \item Tipo de tecnologia: WCDMA, LTE, GSM;
 \item Frequência: 450Mhz, 700Mhz, 850Mhz, 1800Mhz,  2100Mhz, 2600Mhz;
-  \item Elementos RF: Diplex, Triplex, Quadriplex, EHCU, Filtro, TMA, DTMA
+\item Equipamentos de radiofrequência (RF): Diplex, Triplex, Quadriplex, EHCU, Filtro, TMA, DTMA
 \end{itemize}
 
 Essas informações, contudo, não estão prontamente disponíveis. Uma fonte
@@ -330,7 +330,12 @@ de 150 PPIs e os checklists de fevereiro a setembro. Dentre os PPIs foram
 identificados 3 padrões de documento. Como um esforço inicial trabalhamos na
 extração de informação de um único padrão. Dado esse recorte de um único tipo de
 documento, a intersecção entre o grupo de sítios que tínhamos tanto o checklist
-quanto o PPI tem uma cardinalidade de 44. 
+quanto o PPI tem uma cardinalidade de 44.
+
+As características das ERBs estavam de presentes de forma não estruturada em
+tabelas e textos nos ppis. A informação não contida nas tabelas, extraídas por
+meio de pacotes especializados, foi obtida por meio da tokenização dos textos.
+Desta forma geramos automaticamente uma base de características dos sítios.
 
 
 
