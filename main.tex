@@ -1,3 +1,4 @@
+
 %\title{Modelo de Projeto de pesquisa}
 %% abtex2-modelo-projeto-pesquisa.tex, v-1.9 laurocesar
 %% Copyright 2012-2013 by abnTeX2 group at http://abntex2.googlecode.com/ 
@@ -297,19 +298,27 @@ particulares da ERB. Estes itens são, portanto, abonados.
 Em conversas com técnicos e engenheiros responsáveis pelas inspeções foram
 identificadas ao menos duas possibilidades de aplicação de inteligência
 computacional no aperfeiçoamento do processo: a definição de quais itens são
-abonados e quais são aprovadas ou rejeitadas. O problema da dispensa do item, enfoque do presente trabalho, é que os técnicos não sabem de antemão quais itens devem ser abonados em um determinado sítio. Ao chegarem a ERB, desta forma, primeiro devem checar dentre centenas de itens em uma lista quais são dispensáveis e só então iniciam o trabalho da vistoria propriamente dita. Isso contribui drasticamente para a lentidão da atividade. Nossa contribuição para a redução do tempo despendido nessa checagem é descrita em seguida.
+abonados e quais são aprovadas ou rejeitadas. O problema da dispensa do item,
+enfoque do presente trabalho, é que os técnicos não sabem de antemão quais itens
+devem ser abonados em um determinado sítio. Ao chegarem a ERB, desta forma,
+primeiro devem checar dentre centenas de itens em uma lista quais são
+dispensáveis e só então iniciam o trabalho da vistoria propriamente dita. Isso
+contribui drasticamente para a lentidão da atividade. Nossa contribuição para a
+redução do tempo despendido nessa checagem é descrita em seguida.
 
 \chapter[Solução proposta]{Solução proposta}
 Temos por problema a determinação de quais itens de um checklist são passíveis
 de abono. Isso pode ser modelado como um problema de classificação binária :
 dado um conjunto de características de um sítio e qual o item desejamos prever
-se ele é da classe ``abonado'' ou não \cite{james2013introduction}. Especialistas apontaram a seguinte lista de características de um sítio que os próprios técnicos usam para abonar manualmente os itens:
+se ele é da classe ``abonado'' ou não \cite{james2013introduction}.
+Especialistas apontaram a seguinte lista de características de um sítio que os
+próprios técnicos usam para abonar manualmente os itens:
 
 \begin{itemize}
 \item Tipo de site: Gabinete ou Container;
 \item Tipo de tecnologia: WCDMA, LTE, GSM;
 \item Frequência: 450Mhz, 700Mhz, 850Mhz, 1800Mhz,  2100Mhz, 2600Mhz;
-  \item Equipamentos: Diplex, Triplex, Quadriplex, EHCU, Filtro, TMA, DTMA
+  \item Elementos RF: Diplex, Triplex, Quadriplex, EHCU, Filtro, TMA, DTMA
 \end{itemize}
 
 Essas informações, contudo, não estão prontamente disponíveis. Uma fonte
@@ -317,11 +326,11 @@ possível de informação são os Projetos Preliminares de Instalação (PPIs). 
 estão disponíveis em um sistema interno das empresas de telefonia, ao qual nos
 foi dado acesso, em formato pdf. Tivemos acesso também à base de checklists dos
 sítios. Identificamos 602 ERBs cadastrada nesse sistema das quais baixamos cerca
-de 150 checklists e PPIs. Dentre os PPIs foram identificados 3 padrões de
-documento. Como um esforço inicial trabalhamos na extração de informação de um
-único padrão. Dado esse recorte de um único tipo de documento, a intersecção
-entre o grupo de sítios que tínhamos tanto o checklist quanto o PPI tem uma
-cardinalidade de 44, o tamanho da nossa amostra.
+de 150 PPIs e os checklists de fevereiro a setembro. Dentre os PPIs foram
+identificados 3 padrões de documento. Como um esforço inicial trabalhamos na
+extração de informação de um único padrão. Dado esse recorte de um único tipo de
+documento, a intersecção entre o grupo de sítios que tínhamos tanto o checklist
+quanto o PPI tem uma cardinalidade de 44. 
 
 
 
