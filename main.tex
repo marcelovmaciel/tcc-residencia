@@ -289,11 +289,11 @@ baterias, cabos, fontes de energia, antenas, dentre centenas outros. Essa
 vistoria é um trabalho conjunto entre técnicos que visitam os sítios e
 engenheiros de telecomunicação que analisam as informações. Atualmente essa
 troca de informação é feita da seguinte maneira: o técnico visita a ERB e para
-cada item de um \textit{checklist}, que tem de 400 a mais de 600 itens a
-depender da empresa de telefonia detentora do sítio, tiram fotos que são
-enviadas a um sistema, onde são aceitas ou rejeitadas pelos engenheiros na
-central. Contudo, nem todo item precisa ser checado a depender de condições
-particulares da ERB. Estes itens são, portanto, abonados.
+cada item de um \textit{checklist}, que tem até 600 itens a depender da
+empresa de telefonia detentora do sítio, tiram fotos que são enviadas a um
+sistema, onde são aceitas ou rejeitadas pelos engenheiros na central. Contudo,
+nem todo item precisa ser checado a depender de condições particulares da ERB.
+Estes itens são, portanto, abonados.
 
 Em conversas com técnicos e engenheiros responsáveis pelas inspeções foram
 identificadas ao menos duas possibilidades de aplicação de inteligência
@@ -315,7 +315,7 @@ Especialistas apontaram a seguinte lista de características de um sítio que os
 próprios técnicos usam para abonar manualmente os itens:
 
 \begin{itemize}
-\item Tipo de site: Gabinete ou Container;
+\item Tipo de site: Gabinete ou Container\footnote{Na verdade existem 4 variantes de site: 'RT', 'GF', 'RF', 'IN' \textcolor{red}{PRECISO QUE RESPONDAM O EMAIL}};
 \item Tipo de tecnologia: WCDMA, LTE, GSM;
 \item Frequência: 450Mhz, 700Mhz, 850Mhz, 1800Mhz,  2100Mhz, 2600Mhz;
 \item Equipamentos de radiofrequência (RF): Diplex, Triplex, Quadriplex, EHCU, Filtro, TMA, DTMA
@@ -335,7 +335,48 @@ quanto o PPI tem uma cardinalidade de 44.
 As características das ERBs estavam de presentes de forma não estruturada em
 tabelas e textos nos ppis. A informação não contida nas tabelas, extraídas por
 meio de pacotes especializados, foi obtida por meio da tokenização dos textos.
-Desta forma geramos automaticamente uma base de características dos sítios.
+Desta forma geramos automaticamente uma base de características dos sítios. A
+partir da intersecção entre a base de características e a base de items geramos
+um banco de dados de 19000 observações. Na base temos 322 items únicos, com uma
+mediana de 243 items por ERB, e 19 atributos ('Items', 'Status', 'Operadora',
+'Tipo de Site', 'WCDMA', 'LTE', 'GSM', '450Mhz', '700Mhz', '850Mhz', '1800Mhz',
+'2100Mhz', '2600Mhz', 'Diplex', 'Triplex', 'Quadriplexer', 'EHCU', 'Filtro',
+'TMA', 'DTMA'), onde todos menos ``Item'' e ``Tipo de Site'' são variáveis
+binárias.
+
+Uma inspeção inicial na base nos permitiu identificar um desbalanceamento no
+número de itens avaliados x os abonados, no ``Status'' do item. O
+desbalanceamento das classes impacta na performance preditiva de modelos, na
+medida em que o modelo ganha um viés para a classe majoritária simplesmente pelo
+maior número de observações dessa classe, aumentando, portanto, o número de
+falso negativos \cite{faceli2011inteligencia}. Como demonstrado na Figura
+\ref{ref:figbal} o número de itens abonados era mais do dobro dos itens
+avaliados, de forma que optamos pela sobreamostragem da classe minoritária por
+meio de um método de interpolação padrão: o SMOTE (Synthetic Minority
+Over-sampling Technique) \cite{chawla2002smote}. 
+
+\begin{figure}[h]
+  \includegraphics[scale=0.5]{img/balanceamento.png}
+  \caption{Número de Abonados vis-à-vis Avaliados pré e pós balanceamento}
+  \label{ref:figbal}
+\end{figure}
+
+Após o rebalanceamento codificamos os atributos ``Item'' e ``Tipo de Site'' por
+meio de one-hot-encoding. Uma outra opção de codificação seria atribuir um
+número inteiro a cada item, mas essa estratégia confundiria o modelo ao
+implicitamente atribuir ordem a uma variável nominal
+\cite{faceli2011inteligencia}. Uma vez concluído o preprocessamento partimos
+para o uso de modelos preditivos de aprendizado de máquina. Começamos a análise
+por meio da validação cruzada, k-fold com 10 folds, dos seguintes modelos:
+Decision Tree, Multilayer Perceptron, Logistic Regression, Random Forest,
+Xgboost. \textcolor{red}{apresentar cada um e quais parâmetros usados} A Figura
+\ref{ref:figaccs} demonstra a distribuição de acurácias dos classificadores.
+
+\begin{figure}[H]
+  \includegraphics[scale=0.5]{img/cvs.png}
+  \caption{Distribuição de acúracias. Acurácia mediana anotada em cada caixa.}
+  \label{ref:figaccs}
+\end{figure}
 
 
 
