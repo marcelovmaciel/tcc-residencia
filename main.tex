@@ -251,29 +251,12 @@ com a experiência \cite{carbonell1984machine}. Se os dados são o novo petróle
 então os algoritmos utilizados para extrair informação e aprender com esses
 dados podem ser considerados os novos motores da economia.
 
-Embora grandes empresas de tecnologia como Google, Facebook e Amazon façam uso
-de grandes arquiteturas de redes neurais artificiais as quais necessitam de
-dezenas de horas de treinamento em unidades de processamento gráfico, a
-realidade da maior parte das empresas que buscam se inserir nessa nova era
-algorítmica difere em escopo \cite{canziani2016analysis}. Se por um lado a
-inteligência artificial traz a possibilidade de uma riqueza de aplicações e
-otimizações no processo produtivo das empresas, por outro lado se faz necessária
-uma infraestrutura de dados que permita a aplicação dessas técnicas e uma
-``pipeline'' de mineração e recuperação de informação
-\cite{schutze2007introduction}. Ademais a restrição orçamentária e computacional
-e o imperativo da interpretabilidade\footnote{No contexto de aprendizado de
-  máquina a interpretabilidade é definida por \citeonline[p.2]{doshi2017towards}
-  "como a habilidade de explicar ou apresentar em termos compreensíveis para
-  humanos". Uma definição equivalente de interpretabilidade é: o grau no qual um
-  humano pode compreender a causa de uma decisão \cite{miller2018explanation}.}
-do funcionamento dos algoritmos nos direciona, nesses casos medianos, à
-algoritmos mais bem estabelecidos e simples em comparação aos de alta
-publicização \cite{dreiseitl2002logistic}.
 
 O presente estudo apresenta um caso de sucesso da aplicação de sistemas
 inteligentes de recuperação e análise de informação de relativa simplicidade no
 aprimoramento de um processo rotineiro na indústria de telecomunicações: a
-inspeção de estações rádio base.
+inspeção de estações rádio base. \textcolor{red}{O restante do trabalho está
+  estruturado da seguinte forma}
 
 \chapter[Descrição do Caso]{Descrição do Caso}
 Como referenciado anteriormente o sistema alvo de interesse do nosso estudo está
@@ -315,7 +298,7 @@ Especialistas apontaram a seguinte lista de características de um sítio que os
 próprios técnicos usam para abonar manualmente os itens:
 
 \begin{itemize}
-\item Tipo de site: Gabinete ou Container\footnote{Na verdade existem 4 variantes de site: 'RT', 'GF', 'RF', 'IN' \textcolor{red}{PRECISO QUE RESPONDAM O EMAIL}};
+\item Tipo de site: 'RT', 'GF', 'RF', 'IN'; 
 \item Tipo de tecnologia: WCDMA, LTE, GSM;
 \item Frequência: 450Mhz, 700Mhz, 850Mhz, 1800Mhz,  2100Mhz, 2600Mhz;
 \item Equipamentos de radiofrequência (RF): Diplex, Triplex, Quadriplex, EHCU, Filtro, TMA, DTMA
@@ -365,23 +348,97 @@ Após o rebalanceamento codificamos os atributos ``Item'' e ``Tipo de Site'' por
 meio de one-hot-encoding. Uma outra opção de codificação seria atribuir um
 número inteiro a cada item, mas essa estratégia confundiria o modelo ao
 implicitamente atribuir ordem a uma variável nominal
-\cite{faceli2011inteligencia}. Uma vez concluído o preprocessamento partimos
-para o uso de modelos preditivos de aprendizado de máquina. Começamos a análise
-por meio da validação cruzada, k-fold com 10 folds, dos seguintes modelos:
-Decision Tree, Multilayer Perceptron, Logistic Regression, Random Forest,
-Xgboost. \textcolor{red}{apresentar cada um e quais parâmetros usados} A Figura
-\ref{ref:figaccs} demonstra a distribuição de acurácias dos classificadores.
+\cite{faceli2011inteligencia}.
+
 
 \begin{figure}[H]
   \includegraphics[scale=0.5]{img/cvs.png}
-  \caption{Distribuição de acúracias. Acurácia mediana anotada em cada caixa.}
+  \caption{Distribuição de acurácias. Acurácia mediana anotada em cada caixa.}
   \label{ref:figaccs}
 \end{figure}
+
+Uma vez concluído o preprocessamento partimos para o uso de modelos preditivos
+de aprendizado de máquina. Fizemos um Grid Search\footnote{Modelos de
+  aprendizado de máquina apresentam parâmetros, conhecidos como hiperparâmetros,
+  que não são aprendidos internamente, eles são configura\c{c}ões do modelo. É
+  considerada uma boa prática testar diferentes combinações de hiperparâmetros
+  para identificar qual parametrização tem a melhor métrica de avaliação. O Grid
+  Search é quando testamos exaustivamente as parametrizações estabelecidas
+  \cite{geron2019hands}. }, com validação cruzada (k-fold com 10 folds), dos
+seguintes modelos: Decision Tree, Multilayer Perceptron, Logistic Regression,
+Random Forest, Xgboost. A Figura \ref{ref:figaccs} demonstra a distribuição de
+acurácias, (número de predições corretas) / (número total de predições ) , dos
+melhores classificadores de cada tipo. A árvore de decisão (Decision Tree) e a
+floresta aleatória foram os classificadores com melhor performance. Nossa
+hipótese para a performance da Decision Tree é que como o banco de dados após o
+preprocessamento só possui variáveis binárias a árvore de decisão, que funciona
+por meio de uma árvore de divisões do banco em perguntas binárias, é um
+algoritmo ``naturalmente'' eficiente. A floresta aleatória é simplesmente um
+conjunto de árvores de decisão. No nosso caso a floresta aleatória tem a mesma
+acurácia das árvores de decisão, mas com um custo computacional muito maior. A
+árvore de decisão figura então como o algoritmo utilizado em nossa solu\c{c}ão.
+
+A nossa solu\c{c}ão busca auxiliar a tomada de decisão. Desta forma, o output de
+interesse dos usuários seria quais itens teriam a maior probabilidade de serem
+abonados em determinado sítio. A árvore de decisão nos permite determinar a
+probabilidade, para o classificador, de uma instância possuir a uma classe, no
+nosso caso a classe ``Status''. Sendo assim nossa solu\c{c}ão é a seguinte:
+\begin{enumerate}
+\item o usuário indica qual a ERB de inspe\c{c}ão;
+\item procuramos na base qual as características do sítio;
+\item as características preprocessadas são enviadas ao classificador treinado,
+  a árvore de decisão, que retorna as probabilidades de pertencimento à classe
+  ``Abonado'' de cada item do site;
+  \item retornamos ao usuário a lista ordenada, pela probabilidade decrescente
+    de pertencimento à classe, dos itens do site.
+\end{enumerate}
+
 
 
 
 \chapter*[Conclusão]{Conclusão}
 \addcontentsline{toc}{chapter}{Conclusão}
+
+No presente trabalho apresentamos um caso de aperfei\c{c}oamento do processo de
+inspe\c{c}ão de esta{c}ões rádio base por meio de minera\c{c}ão de dados e
+inteligência artificial. Embora grandes empresas de tecnologia como Google,
+Facebook e Amazon façam uso de grandes arquiteturas de redes neurais artificiais
+as quais necessitam de dezenas de horas de treinamento em unidades de
+processamento gráfico, a realidade da maior parte das empresas que buscam se
+inserir nessa nova era algorítmica difere em escopo \cite{canziani2016analysis}.
+Se por um lado a inteligência artificial traz a possibilidade de uma riqueza de
+aplicações e otimizações no processo produtivo das empresas, por outro lado se
+faz necessária uma infraestrutura de dados que permita a aplicação dessas
+técnicas e uma ``pipeline'' de mineração e recuperação de informação
+\cite{schutze2007introduction}. Ademais a restrição orçamentária e computacional
+e o imperativo da interpretabilidade\footnote{No contexto de aprendizado de
+  máquina a interpretabilidade é definida por \citeonline[p.2]{doshi2017towards}
+  "como a habilidade de explicar ou apresentar em termos compreensíveis para
+  humanos". Uma definição equivalente de interpretabilidade é: o grau no qual um
+  humano pode compreender a causa de uma decisão \cite{miller2018explanation}.}
+do funcionamento dos algoritmos nos direciona, nesses casos medianos, à
+algoritmos mais bem estabelecidos e simples em comparação aos de alta
+publicização \cite{dreiseitl2002logistic}.
+
+No nosso caso a minera\c{c}ão de dados contidos em documentos contidos nos
+servidores internos de empresas de tecnologias em conjun\c{c}ão com um modelo
+simples e interpretável de aprendizado de máquina nos permitiu contribuir no
+processo produtivo. Há, contudo, muito a ser feito. Primeiramente, estender a
+minera\c{c}ão para todos os tipos de documentos contidos nos servidores é o
+próximo passo. Segundo, investigar como melhorar a acurácia dos classificadores,
+dado que temos um limiar máximo de aproximadamente 82\%. Nossa hipótese, por
+meio de investiga\c{c}ão dos servidores e conversas com usuários, é que o não
+cumprimento dos procedimentos de inspe\c{c}ão nas respostas aos itens gera ruído
+que confunde os classificadores. A despeito disso, ainda há a necessidade de
+investigar como aperfei\c{c}oar os algoritmos independentemente da qualidade dos
+dados. Por fim, a determina\c{c} de quais itens são abonáveis é somente a
+primeira tarefa, pois o problema de determinar, algoritmicamente, quais itens
+são aceitos ou rejeitados há de requerer uma pletora de estudos adicionais.
+
+
+
+
+
 
 % ---
 % Conclusão
