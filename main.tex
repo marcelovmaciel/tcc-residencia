@@ -281,7 +281,7 @@ Estes itens são, portanto, abonados.
 Em conversas com técnicos e engenheiros responsáveis pelas inspeções foram
 identificadas ao menos duas possibilidades de aplicação de inteligência
 computacional no aperfeiçoamento do processo: a definição de quais itens são
-abonados e quais são aprovadas ou rejeitadas. O problema da dispensa do item,
+abonados e quais são aprovados ou rejeitados. O problema da dispensa do item,
 enfoque do presente trabalho, é que os técnicos não sabem de antemão quais itens
 devem ser abonados em um determinado sítio. Ao chegarem a ERB, desta forma,
 primeiro devem checar dentre centenas de itens em uma lista quais são
@@ -348,8 +348,8 @@ Após o rebalanceamento codificamos os atributos ``Item'' e ``Tipo de Site'' por
 meio de one-hot-encoding. Uma outra opção de codificação seria atribuir um
 número inteiro a cada item, mas essa estratégia confundiria o modelo ao
 implicitamente atribuir ordem a uma variável nominal
-\cite{faceli2011inteligencia}.
-
+\cite{faceli2011inteligencia}. A matriz de atributos após o rebalanceamento e a
+codifica\c{c}ão tem 27002 linhas e 348 colunas.
 
 \begin{figure}[H]
   \includegraphics[scale=0.5]{img/cvs.png}
@@ -369,32 +369,56 @@ seguintes modelos: Decision Tree, Multilayer Perceptron, Logistic Regression,
 Random Forest, Xgboost. A Figura \ref{ref:figaccs} demonstra a distribuição de
 acurácias, (número de predições corretas) / (número total de predições ) , dos
 melhores classificadores de cada tipo. A árvore de decisão (Decision Tree) e a
-floresta aleatória foram os classificadores com melhor performance. Nossa
-hipótese para a performance da Decision Tree é que como o banco de dados após o
-preprocessamento só possui variáveis binárias a árvore de decisão, que funciona
-por meio de uma árvore de divisões do banco em perguntas binárias, é um
-algoritmo ``naturalmente'' eficiente. A floresta aleatória é simplesmente um
-conjunto de árvores de decisão. No nosso caso a floresta aleatória tem a mesma
-acurácia das árvores de decisão, mas com um custo computacional muito maior. A
-árvore de decisão figura então como o algoritmo utilizado em nossa solu\c{c}ão.
+floresta aleatória (Random Forest) foram os classificadores com melhor
+performance.
 
-A nossa solu\c{c}ão busca auxiliar a tomada de decisão. Desta forma, o output de
-interesse dos usuários seria quais itens teriam a maior probabilidade de serem
-abonados em determinado sítio. A árvore de decisão nos permite determinar a
-probabilidade, para o classificador, de uma instância possuir a uma classe, no
-nosso caso a classe ``Status''. Sendo assim nossa solu\c{c}ão é a seguinte:
+Nosso problema de interesse e banco de dados contêm características que
+\citeonline[p.54]{mitchell1997machine} indica serem particularmente
+``tratáveis'' por meio de árvores de decisão: os atributos têm poucos valores, o
+output assume valores discretos, descri\c{c}ões disjuntas são requeridas e os
+dados de treino podem conter erros.
+  
+A floresta aleatória, por sua vez, é simplesmente um conjunto de árvores de
+decisão, onde cada árvore de decisão é treinada em uma amostra sorteada da base
+(sorteia-se tanto linhas quanto colunas da base, com reposi\c{c}ão). No nosso
+caso a floresta aleatória tem a mesma acurácia das árvores de decisão, mas com
+um custo computacional muito maior. A árvore de decisão figura então como o
+algoritmo utilizado. A matriz de confusão na Figura \ref{ref:figmatriz} nos dá
+uma no\c{c}ão mais completa da performance do classificador: em torno de 20\%
+das classifica\c{c}ões são falsos positivos ou negativos.
+
+ \begin{figure}[h]
+   \centering
+  \includegraphics[scale=0.8]{img/confusionmatrix.png}
+  \caption{Matriz de confusão num banco de teste de 60\%. 0 é ``Abonado''.}
+  \label{ref:figmatriz}
+\end{figure}
+
+
+
+
+%% \begin{itemize}
+%% \item  Métrica: impureza de Gini;
+%% \item Profundidade máxima da árvore: 150;
+%% \item Número máximo de atributos utilizáveis em cada divisão: número total de atributos (348)
+%%   \item Número mínimo de amostras usadas para dividir um nó: 2
+%% \end{itemize}
+
+Em conversas com especialistas, definiu-se que o ``output'' de interesse dos
+usuários seria quais itens teriam a maior probabilidade de serem abonados em
+determinado sítio. A árvore de decisão nos permite determinar a probabilidade,
+para o classificador, de uma instância ser de uma classe, no nosso caso a classe
+``Abonado''. Sendo assim nossa solu\c{c}ão é a seguinte:
+
 \begin{enumerate}
 \item o usuário indica qual a ERB de inspe\c{c}ão;
-\item procuramos na base qual as características do sítio;
+\item extrai-se da base construída qual as características do sítio;
 \item as características preprocessadas são enviadas ao classificador treinado,
   a árvore de decisão, que retorna as probabilidades de pertencimento à classe
   ``Abonado'' de cada item do site;
-  \item retornamos ao usuário a lista ordenada, pela probabilidade decrescente
+  \item retorna-se ao usuário a lista ordenada, pela probabilidade decrescente
     de pertencimento à classe, dos itens do site.
 \end{enumerate}
-
-
-
 
 \chapter*[Conclusão]{Conclusão}
 \addcontentsline{toc}{chapter}{Conclusão}
