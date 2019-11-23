@@ -76,7 +76,7 @@
 % Pacotes de citações
 % ---
 \usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
-\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+\usepackage[num]{abntex2cite}	% Citações padrão ABNT
 
 % --- 
 % CONFIGURAÇÕES DE PACOTES
@@ -333,8 +333,8 @@ desbalanceamento das classes impacta na performance preditiva de modelos, na
 medida em que o modelo ganha um viés para a classe majoritária simplesmente pelo
 maior número de observações dessa classe, aumentando, portanto, o número de
 falso negativos \cite{faceli2011inteligencia}. Como demonstrado na Figura
-\ref{ref:figbal} o número de itens abonados era mais do dobro dos itens
-avaliados, de forma que optamos pela sobreamostragem da classe minoritária por
+\ref{ref:figbal} o número de itens avaliados era mais do dobro dos itens
+abonados, de forma que optamos pela sobreamostragem da classe minoritária por
 meio de um método de interpolação padrão: o SMOTE (Synthetic Minority
 Over-sampling Technique) \cite{chawla2002smote}. 
 
@@ -373,7 +373,7 @@ floresta aleatória (Random Forest) foram os classificadores com melhor
 performance.
 
 Nosso problema de interesse e banco de dados contêm características que
-\citeonline[p.54]{mitchell1997machine} indica serem particularmente
+\citeonline{mitchell1997machine} indica serem particularmente
 ``tratáveis'' por meio de árvores de decisão: os atributos têm poucos valores, o
 output assume valores discretos, descri\c{c}ões disjuntas são requeridas e os
 dados de treino podem conter erros.
@@ -381,20 +381,20 @@ dados de treino podem conter erros.
 A floresta aleatória, por sua vez, é simplesmente um conjunto de árvores de
 decisão, onde cada árvore de decisão é treinada em uma amostra sorteada da base
 (sorteia-se tanto linhas quanto colunas da base, com reposi\c{c}ão). No nosso
-caso a floresta aleatória tem a mesma acurácia das árvores de decisão, mas com
-um custo computacional muito maior. A árvore de decisão figura então como o
-algoritmo utilizado. A matriz de confusão na Figura \ref{ref:figmatriz} nos dá
-uma no\c{c}ão mais completa da performance do classificador: em torno de 20\%
-das classifica\c{c}ões são falsos positivos ou negativos.
+caso a floresta aleatória tem uma acurácia mediana um pouco maior do que as
+árvores de decisão (0.81 x 0.806), mas com um custo computacional muito maior. A
+árvore de decisão figura então como o algoritmo utilizado nesse estágio do
+projeto. A matriz de confusão, na qual utilizamos o melhor classificador da
+valida\c{c}ão cruzada, na Figura \ref{ref:figmatriz} anos dá uma no\c{c}ão mais
+completa da performance do classificador: em torno de 16\% das
+classifica\c{c}ões como ``avaliável'' são falsos negativos.
 
  \begin{figure}[h]
    \centering
-  \includegraphics[scale=0.8]{img/confusionmatrix.png}
-  \caption{Matriz de confusão num banco de teste de 60\%. 0 é ``Abonado''.}
+  \includegraphics[scale=0.6]{img/confusionmatrix1.png}
+  \caption{Matriz de confusão num banco de teste de 60\%. 1 é ``Abonado''.}
   \label{ref:figmatriz}
 \end{figure}
-
-
 
 
 %% \begin{itemize}
@@ -450,7 +450,7 @@ simples e interpretável de aprendizado de máquina nos permitiu contribuir no
 processo produtivo. Há, contudo, muito a ser feito. Primeiramente, estender a
 minera\c{c}ão para todos os tipos de documentos contidos nos servidores é o
 próximo passo. Segundo, investigar como melhorar a acurácia dos classificadores,
-dado que temos um limiar máximo de aproximadamente 82\%. Nossa hipótese, por
+dado que temos um limiar máximo de aproximadamente 84\%. Nossa hipótese, por
 meio de investiga\c{c}ão dos servidores e conversas com usuários, é que o não
 cumprimento dos procedimentos de inspe\c{c}ão nas respostas aos itens gera ruído
 que confunde os classificadores. A despeito disso, ainda há a necessidade de

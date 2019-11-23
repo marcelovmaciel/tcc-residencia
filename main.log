@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2019/dev/Debian) (preloaded format=xelatex 2019.9.18)  4 NOV 2019 17:41
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2019/dev/Debian) (preloaded format=xelatex 2019.9.18)  18 NOV 2019 12:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1237,7 +1237,7 @@ Package: relsize 2013/03/29 ver 4.1
 )
 \biblabelsep=\skip265
 LaTeX Info: Redefining \newblock on input line 672.
-LaTeX Info: Redefining \cite on input line 699.
+LaTeX Info: Redefining \cite on input line 943.
 \ABCItoken=\toks41
 )
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/se-ascii-print.def
@@ -1387,29 +1387,41 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 ] [6
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 318.
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 301.
 
 
 (/usr/share/texmf/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 318.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 301.
  [7
 
-] (./main.bbl (./main.brf)
+]
+File: img/balanceamento.png Graphic file (type bmp)
+<img/balanceamento.png>
+File: img/cvs.png Graphic file (type bmp)
+<img/cvs.png>
+ [8]
+File: img/confusionmatrix1.png Graphic file (type bmp)
+<img/confusionmatrix1.png>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[9] [10] (./main.bbl (./main.brf)
 \tf@brf=\write6
 \openout6 = `main.brf'.
 
- [8
+ [11
 
 ]
 bibitemlist
 )
 No file main.ind.
-[9
+[12
 
-]
+] [13]
 \tf@lof=\write7
 \openout7 = `main.lof'.
 
@@ -1419,26 +1431,26 @@ No file main.ind.
 \tf@toc=\write9
 \openout9 = `main.toc'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 374.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 374.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 496.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 496.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 374.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 374.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 496.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 496.
 Package rerunfilecheck Info: File `main.brf' has not changed.
-(rerunfilecheck)             Checksum: 100FC581F73168440401E5D17964EF15.
+(rerunfilecheck)             Checksum: 2213F228049D79DA56C383E36932D173.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 374.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 496.
  ) 
 Here is how much of TeX's memory you used:
- 36959 strings out of 494900
- 695080 string characters out of 6177140
- 957411 words of memory out of 5000000
- 40402 multiletter control sequences out of 15000+600000
- 593196 words of font info for 60 fonts, out of 8000000 for 9000
+ 37026 strings out of 494900
+ 696418 string characters out of 6177140
+ 958411 words of memory out of 5000000
+ 40462 multiletter control sequences out of 15000+600000
+ 597459 words of font info for 61 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  60i,12n,67p,433b,471s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (10 pages).
+Output written on main.pdf (14 pages).
